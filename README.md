@@ -14,5 +14,5 @@ cmake ..
 ## Run
 
 ```bash
-<PROJECTDIR>/build/bin/dispatcher
+<PROJECTDIR>/<TARGETDIR>/bin/dispatcher
 ```
