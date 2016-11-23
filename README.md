@@ -9,6 +9,7 @@ cd <PROJECTDIR>
 mkdir <TARGETDIR>
 cd <TARGETDIR>
 cmake ..
+make
 ```
 
 ## Run
