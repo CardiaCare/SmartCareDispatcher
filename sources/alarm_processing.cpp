@@ -228,4 +228,4 @@ void help_response_handler(sslog_subscription_t* subscription) {
             return;
         }
     }
-}
+}   
