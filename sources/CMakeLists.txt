@@ -9,4 +9,6 @@ target_link_libraries(dispatcher smartcare)
 target_link_libraries(dispatcher ${SMARTSLOG_LIBRARIES})
 target_link_libraries(dispatcher ${CKPI_LIBRARIES})
 target_link_libraries(dispatcher ${CMAKE_THREAD_LIBS_INIT} ${Boost_LIBRARIES})
+
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -fprofile-arcs -ftest-coverage")
 target_link_libraries(dispatcher gcov)

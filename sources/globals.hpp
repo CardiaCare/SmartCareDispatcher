@@ -6,8 +6,8 @@
 #include "AlarmClass.hpp"
 
 #define KP_SS_NAME "X"
-//#define KP_SS_ADDRESS "127.0.0.1"
-#define KP_SS_ADDRESS "78.46.130.194"
+#define KP_SS_ADDRESS "127.0.0.1"
+//#define KP_SS_ADDRESS "78.46.130.194"
 //#define KP_SS_ADDRESS "194.85.173.9"
 #define KP_SS_PORT 10010
 

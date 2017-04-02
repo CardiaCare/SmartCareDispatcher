@@ -12,3 +12,4 @@ extern "C"{
 void sbcr_thread();
 int subscribe_to_alarm();
 void new_alarm_handler(sslog_subscription_t*);
+void fetch_alarms();

@@ -16,6 +16,9 @@ void sbcr_thread()
     std::cout << "Subscription is successful\n";
 }
 int subscribe_to_alarm(){
+   fetch_alarms();
+
+
    sslog_subscription_t *subscription = sslog_new_subscription(global_node, true);
    sslog_sbcr_add_class(subscription, CLASS_ALARM);
 
@@ -31,6 +34,38 @@ int subscribe_to_alarm(){
 
    return 0;
 }
+
+/**
+ * @brief fetch_alarms
+ * @todo REFACTOR
+ */
+void fetch_alarms() {
+    list_t* alarms = sslog_node_get_individuals_by_class(global_node, CLASS_ALARM);
+
+    if (list_is_null_or_empty(alarms) == true) {
+        std::cout << "There are no such alarms on init." << std::endl;
+        return;
+    }
+
+    list_head_t *pos = NULL;
+
+    list_for_each(pos, &alarms->links)
+    {
+        list_t *node = list_entry(pos, list_t, links);
+        sslog_individual_t* _alarm = (sslog_individual_t *) node->data;
+        sslog_triple_t *alarm_uri_from_triple = sslog_individual_to_triple (_alarm);
+        char *_alarm_uri  = alarm_uri_from_triple->subject;
+        Alarm *alarm = new Alarm(_alarm_uri);
+        alarm->setTime(std::chrono::steady_clock::now());
+        std::cout << "Alarm with URI: ";
+        std::cout << _alarm_uri;
+        std::cout << " was retrieved" << std::endl;
+
+        alarm_queue.push(alarm);
+    }
+    return;
+}
+
 void new_alarm_handler(sslog_subscription_t *subscription){
 
     sslog_sbcr_changes_t *changes = sslog_sbcr_get_changes_last(subscription);

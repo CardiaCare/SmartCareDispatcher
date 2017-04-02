@@ -1,7 +1,5 @@
 #include "smartspace_utils.hpp"
 
-
-
 int connect_to_smartspace(){
     sslog_init();
     register_ontology();
@@ -15,6 +13,7 @@ int connect_to_smartspace(){
     }
     return 0;
 }
+
 /**
  * Calculate number of digits in the number.
  */
@@ -26,6 +25,7 @@ unsigned int digit_count(int inputNumber) {
         ++count;
     }
 }
+
 /**
  * Generate random uri based on class.
  * This function use sslog_generate_uri() function to retrieve base uri
@@ -33,6 +33,7 @@ unsigned int digit_count(int inputNumber) {
  * We use this function because on several machines sslog_generate_uri()
  * function always return same number.
  */
+
 char* generate_uri(sslog_class_t* _class){
     char* uri = sslog_generate_uri(_class);
     static int i = 0;

@@ -1,3 +1,4 @@
+
 #include "dispatcher.hpp"
 
 int main( int argc, char** argv ){
@@ -35,7 +36,7 @@ int main( int argc, char** argv ){
     std::cout << "Subscription thread was started\n\n";
 
     std::cout << "Trying to start alarm thread...\n";
-    boost::thread t1{alarm_thread};
+//    boost::thread t1{alarm_thread};
 
     std::cout << "Alarm thread was started\n\n";
 
@@ -46,7 +47,7 @@ int main( int argc, char** argv ){
     while(!global_stop_signal_recieved) { getchar(); }
 
     t0.join();
-    t1.join();
+//    t1.join();
     return 0;
 }
 void ctrl_c_handler(int dummy) {
