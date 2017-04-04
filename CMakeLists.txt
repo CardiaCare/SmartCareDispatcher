@@ -10,6 +10,7 @@ include_directories(${SMARTSLOG_INCLUDE_DIRS})
 include_directories(${CKPI_INCLUDE_DIRS})
 link_directories(${SMARTSLOG_LIBRARY_DIRS})
 link_directories(${CKPI_LIBRARY_DIRS})
+
 # Boost
 set(Boost_USE_STATIC_LIBS   ON)
 set(Boost_USE_MULTITHREADED ON)
@@ -17,6 +18,13 @@ find_package( Boost 1.54 REQUIRED )
 find_package(Boost 1.54 REQUIRED COMPONENTS thread date_time program_options system unit_test_framework)
 include_directories( ${Boost_INCLUDE_DIR} )
 link_directories( ${Boost_LIBRARY_DIRS})
+
+#OSRM
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+find_package(LibOSRM REQUIRED)
+include_directories( ${LibOSRM_INCLUDE_DIRS} )
+link_directories( ${LibOSRM_LIBRARY_DIRS} )
+
 # to source...
 add_subdirectory (sources)
 add_subdirectory(test)

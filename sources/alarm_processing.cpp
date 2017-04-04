@@ -44,6 +44,7 @@ void wait(int milliseconds)
 void single_alarm_worker( Alarm* alarm_object ) {
     URI* _alarm_uri = alarm_object->getUri();
     char *alarm_uri = reinterpret_cast<char*>(_alarm_uri->data());
+
     sslog_individual_t *alarm = sslog_node_get_individual_by_uri(global_node, alarm_uri);
     for(int index = 0; index < 100 && NULL == alarm; index++  ){
         std::cout << "No Alarm" << std::endl;
@@ -53,6 +54,7 @@ void single_alarm_worker( Alarm* alarm_object ) {
     if(alarm == NULL){
         return;
     }
+
     wait(100);
     sslog_individual_t *patient = retrieve_domain_individual(PROPERTY_SENDALARM, alarm);
     for(int index = 0; index < 100 && NULL == patient; index++  ){

@@ -2,17 +2,6 @@
 #include "dispatcher.hpp"
 
 int main( int argc, char** argv ){
-
-    //     filename = "experiment_";
-    //     filename = filename + argv[1];
-
-
-
-    //     std::ofstream myfile;
-    //     myfile.open (filename, std::ofstream::out | std::ofstream::app);
-    //     myfile << "Experiment" << std::endl;
-    //     myfile.close();
-
     /*
     * Connect to SmartSpace
     */

@@ -71,7 +71,7 @@ void new_alarm_handler(sslog_subscription_t *subscription){
     sslog_sbcr_changes_t *changes = sslog_sbcr_get_changes_last(subscription);
 
     const list_t *alarms =
-            sslog_sbcr_ch_get_individual_by_action(changes, SSLOG_ACTION_INSERT);
+            sslog_sbcr_ch_get_individual_by_action(changes, SSLOG_ACTION_REMOVE);
     if (alarms == NULL) {
         return;
     }
@@ -79,6 +79,8 @@ void new_alarm_handler(sslog_subscription_t *subscription){
     list_for_each(iterator, &alarms->links) {
         list_t *list_node = list_entry(iterator, list_t, links);
         char *_alarm_uri = (char *) list_node->data;
+        std::cout << "Removed URI: " << _alarm_uri <<std::endl;
+        break;
         Alarm *alarm = new Alarm(_alarm_uri);
         alarm->setTime(std::chrono::steady_clock::now());
 //        URI *_uri = new URI();
